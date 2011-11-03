@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Confirmation-suppression{% endblock %}
+{% block page-id %}Confirmation-suppression{% endblock %}
+{% block content %}
+    <!-- end #header -->
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <!-- end #menu -->
+    <div id="content">
+        <div class="post">
+            <h1 class="title">La page de suppression</h1>
+                <p class="meta">!!! </p>
+            <div class="entry">
+                <table>
+                    <thead>
+                        <tr>
+                           <th> Magasin </th>
+                           <th> Produit</th>
+                           <th> Nbre carton </th>
+                           <th> Nbre piece/c </th>
+                           <th colspan=2> Restant </th>
+                           <th> Date </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            {% ifnotequal rapport.type_r "e"%}
+                            <img id ='image' class ="{{valide}}"src="/static/css/images/sortie.png" width="15"/>
+                            {%else%}<img id ='image' class ="{{valide}}"src="/static/css/images/entre.png" width="15"/>
+                            {% endifnotequal %}{{rapport.magasins}}</td>
+                        <td>{{rapport.produit.name}}</td>
+                        <td>{{rapport.nbr_carton}} </td>
+                        <td>{{rapport.produit.qtte}} </td>
+                        <td>{{rapport.carton_remaining}} c</td>
+                        <td>{{rapport.piece_remaining}} p</td>
+                        <td>{{rapport.date|date:"d b Y"}}</td>
+                    </tr>
+                </table>
+            </div>
+                <span class="post-nav" style="float: right;font-size: 19px;">
+                    <a style="margin-top: 50px;display: inline;color: #972A2A" href="{{rapport.url_delete}}" >Supprimer</a>
+                    <a style=" display: inline " href="{% url g-rapport %}" >Annuler</a>
+                </span>
+            </div>
+        </div>
+        <div style="clear: both;">&nbsp;</div>
+    </div>
+{% endblock %}

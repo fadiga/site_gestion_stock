@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Add-produit{% endblock %}
+{% block page-id %}Add-produit{% endblock %}
+{% block content %}
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link1"><span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <!-- end #menu -->
+        <div id="content">
+            <div class="post">
+                <h1 class="title">Fromulaire de Saisie des Produits</h1>
+                <p class="meta"></p>
+                <div id = "form">
+                    <form action="" method="post">{% csrf_token %}
+                        <table>
+                            <tr>
+                                <td>{{form.name.label}}</td>
+                                <td title= "Saisie le nom du marchandise">{{form.name.errors}}{{form.name}}</td>
+                                <td>{{form.qtte.label}}</td>
+                                <td title= "Saisie le nombre de piece pour un carton">{{form.qtte.errors}}{{form.qtte}}</td>
+                                <td><input class= "buttons" type="submit" value="ok"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="post">
+                <h1 class="title">Les produits </h1>
+                    <p class="meta"></p>
+                    <a href="{% url commande %}">Faire une commande</a>
+                <div class="entry">
+                    <table  id="insured_list" class="tablesorter">
+                        <thead>
+                            <tr>
+                               <th> Produit</th>
+                               <th> Nobre de pièce </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for ach in produits %}
+                            <tr>
+                                <td>{{ach.name}}</td>
+                                <td>{{ach.qtte}} pieces/cartons</td>
+                            </tr>
+                        {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end #content -->
+        <div class="post-nav" id="sidebar">
+            <ul>
+                <li>
+                    <h2>Aller à</h2>
+                    <a href="#form">Formulaire »</a><br>
+                    <a href="#insured_list">Rapports »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- end #sidebar -->
+        <div style="clear: both;">&nbsp;</div>
+    </div>
+</div>
+{% endblock %}

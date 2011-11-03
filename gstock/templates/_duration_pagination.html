@@ -1,0 +1,31 @@
+
+<ul>
+
+    <li>Par: </li>
+
+    <li>
+        {% ifequal duration "week" %}
+            <span class="choix">Semaine</span>
+        {% else %}
+             <a href="{{ week_date_url }}"> Semaine</a>
+        {% endifequal %}
+    </li>
+
+    <li>
+        {% ifequal duration "month" %}
+            <span class="choix">Mois</span>
+        {% else %}
+            <a href="{{ month_date_url }}"> Mois</a>
+        {% endifequal %}
+    </li>
+
+    <li>
+        {% if duration  %}
+            <a href="{{ year_date_url }}"> Année </a>
+        {% else %}
+            <span class="choix">Année</span>
+        {% endif%}
+    </li>
+
+</ul>
+

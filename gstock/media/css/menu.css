@@ -1,0 +1,10 @@
+/*
+css by fadiga
+*/
+
+/* Menu */
+#menu {background-color: bleu ;margin-top: -1px;margin-bottom: 45px;font-family: inherit,verdana,sans-serif; margin-left: -37px;}
+#menu li.top {display:block; float:left; position:relative;}
+#menu li a.top_link {border: 1px inset PaleTurquoise; display: block; float: left;font-size: 14px; padding: 1px 3px 0 5px;}
+#menu li a.top_link:hover {background-color: #ECECEC;color:#000;}
+#menu li a.top_link1 span {padding: 0 3px 5px;font-size: 15px; border-top:1px double White;color:#000000;}

@@ -1,0 +1,6 @@
+django==1.3
+django-smuggler
+django_extensions
+Babel==0.9.6
+xlwt==0.7.2
+

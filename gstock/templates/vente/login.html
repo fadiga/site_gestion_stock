@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block page-id %}login{% endblock %}
+{% block content %}
+    <div id="content">
+        <div class="post">
+            <h1 class="title"><a href="#">Bienvenu dans la Gestion de stock </a></h1>
+            <p class="meta">date de création 2011 </p>
+            <div class="entry">
+                <p >
+                </p>
+                <h2>Se connecter</h2><span class="errorlist"> {{state}} </span>
+                <form action="{% url login %}" method="post">{% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>{{ form.username.label}} </td><td> {{ form.username}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.password.label}}</td><td>{{ form.password}}</td>
+                        </tr>
+                        <tr>
+                            <td></td><td><input id = 'id_Connexion' type="submit" value="Se connecter" style="width: 183px;cursor: pointer;"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">&nbsp;</div>
+    </div>
+{% endblock %}

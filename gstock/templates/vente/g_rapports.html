@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Add-rapport{% endblock %}
+{% block page-id %}Add-rapport{% endblock %}
+{% block content %}
+
+    <!-- end #header -->
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}" class="top_link1"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <!-- end #menu -->
+        <div id="content">
+            <div class="post">
+                <h1 class="title">Fromulaire de Saisie des Produits</h1>
+                <p class="meta"><span id="mess">{{message}}</span></p>
+                <div id = "form">
+                    <form method="post" >{% csrf_token %}
+                        <table>
+                            <tr>
+                                <td>{{form.magasins.label}}:</td><td title="Choix du magasin">{{form.magasins.errors}}{{form.magasins}}</td>
+                                <td>{{form.produit.label}}:</td><td title="Choix du produit">{{form.produit.errors}}{{form.produit}}</td>
+                                <td>{{form.type_r.label}}: </td><td title="Permet de designer: l'entre des produit dans le magsin(Entre) et la sortie (Sortie)">{{form.type_r.errors}}{{form.type_r}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{form.nbr_carton.label}}:</td><td title="Saisie nombre de carton du produit">{{form.nbr_carton.errors}} {{form.nbr_carton}}</td>
+                                <td>{{form.date.label}}:</td><td title="La date de l'operation"  autocomplete="off">{{form.date.errors}} {{form.date}}</td>
+                                <td></td><td><input class="buttons" type="submit" value="ok"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="post">
+                <h1 class="title">Rapports saisies</h1>
+                <p class="meta"></p>
+                    <span id="pag">{% include "_report_management_pagination.html" %}</span>
+                <div class="entry">
+                    <table  id="insured_list" class="tablesorter">
+                        <thead>
+                            <tr>
+                               <th>Auteur</th>
+                               <th>Magasin</th>
+                               <th>Produit</th>
+                               <th>Nbre carton</th>
+                               <th colspan=2>Restant</th>
+                               <th>Date</th>
+                               <th>Supp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rapport in page.object_list %}
+                                <tr>
+                                    <td>{{rapport.auteur}} </td>
+                                    <td>
+                                        {% ifnotequal rapport.type_r "e"%}
+                                        <img id ='image' class ="{{valide}}"src="/static/css/images/sortie.png" width="12">
+                                        {%else%}<img id ='image' class ="{{valide}}"src="/static/css/images/entre.png" width="12">
+                                        {% endifnotequal %}
+                                        <a href="{{ rapport.url_magasin }}">{{rapport.magasins}}</a></td>
+                                    <td><a href="{{ rapport.url_produit }}">{{rapport.produit.name}}</a></td>
+                                    <td>{{rapport.nbr_carton}} </td>
+                                    <td>{{rapport.carton_remaining}} c</td>
+                                    <td>{{rapport.piece_remaining}} p</td>
+                                    <td>{{rapport.date|date:"d/m/Y"}}</td>
+                                    <td><a href="{{ rapport.url_delete }}">
+                                        <img src="/static/css/images/cross.png" width="15"/></a>
+                                    </td>
+                                </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <span>{% include "_report_management_pagination.html" %}</span>
+        </div>
+        <!-- end #content -->
+        <div class="post-nav" id="sidebar">
+            <ul>
+                <li>
+                    <h2>Aller à</h2>
+                    <a href="#form">Formulaire»</a><br>
+                    <a href="#pag">Rapports »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- end #sidebar -->
+        <div style="clear: both;">&nbsp;</div>
+    </div>
+    <script type="text/javascript">
+        $('#id_date').datepicker({ dateFormat: 'yy-mm-dd',
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Rapports periodiques{% endblock %}
+{% block page-id %}Rapportsperiodiques{% endblock %}
+{% block content %}
+
+    <!-- end #header -->
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link1"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
+            <li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <!-- end #menu -->
+    <div id="content">
+        <div class="post">
+            <h1 class="title">Rapport {% if date_debut %}Du {{date_debut}} Au {{date_fin}}{% endif %}</h1>
+            <p class="meta">!!!</p>
+            <div class="entry">
+                <table  id="insured_list" class="tablesorter">
+                    <thead>
+                        <tr>
+                            <th>Auteur</th>
+                           <th> Magasin </th>
+                           <th> Produit</th>
+                           <th> Nbre carton </th>
+                           <th> Nbre pièce </th>
+                           <th colspan=2> Restant </th>
+                           <th> Date </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in rapports %}
+                        <tr>
+                            <td>{{report.auteur.username}}
+                                {% ifnotequal report.type_r "e"%}
+                                    <img id ='image' class ="{{valide}}"src="/static/css/images/sortie.png" width="12"/>
+                                {%else%}
+                                    <img id ='image' class ="{{valide}}"src="/static/css/images/entre.png" width="12"/>
+                                {% endifnotequal%}
+                            </td>
+                            <td>{{report.magasins.name}}</td>
+                            <td>{{report.produit.name}}</td>
+                            <td>{{report.nbr_carton}} c</td>
+                            <td>{{report.produit.qtte}} p</td>
+                            <td>{{report.carton_remaining}} c</td>
+                            <td>{{report.piece_remaining}} p</td>
+                            <td>{{report.date|date:"d b Y"}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot id="tfoot">
+                        <tr>
+                            <th>Auteur</th>
+                            <th> Magasin </th>
+                            <th> Produit</th>
+                            <th> Nbre carton </th>
+                            <th> Nbre pièce </th>
+                            <th colspan=2> Restant </th>
+                            <th> Date </th>
+                        </tr>
+                    </tfoot>
+                </table>
+                {% if rapports %}
+                    <a href="{% url export_excel %}" title=" Export les données" style="margin-left: 70em">
+                        <img id ='image' src="/static/css/images/xls.png" width="25"/>
+                    </a>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    <!-- end #content -->
+    <div id="sidebar">
+        <ul>
+            <li>
+                <h2> Choisie une periode</h2>
+                <form  method="post" autocomplete="off">{% csrf_token %}
+                    {{form.date_debut.label}}<br>
+                    {{form.date_debut}}<br>
+                    {{form.date_fin.label}}<br>
+                    {{form.date_fin}}
+                    <input class="buttons" type='submit' value = "OK">
+                </form>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <!-- end #sidebar -->
+    <div style="clear: both;">&nbsp;</div>
+    <script type="text/javascript">
+        jQuery('#id_date_debut, #id_date_fin').datepicker({
+             dateFormat: 'dd-mm-yy',
+            });
+    </script>
+    <!-- end #page -->
+{% endblock %}

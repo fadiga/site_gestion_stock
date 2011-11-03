@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block page-id %}home{% endblock %}
+{% block content %}
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+
+    <!-- end #menu -->
+    <div id="content">
+            <h1 class="title"><a href="#">Choisissez un sujet pour commencer </a></h1>
+            <div class="entry">
+                <div id="choix">
+                    <ul>
+                        <li>
+                            <a href="{% url v-dashboard %}" class="buttons">Gestion Stock</a>
+                            <a href="{% url commande %}" class="buttons"> <span>Faire une commande</span></a>
+                            <a href="{% url invent %}" class="buttons"> <span>Faire un inventaire</span></a>
+                            <a href="{% url owner %}" class="buttons"> <span>Gestion des utilisateur</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">&nbsp;</div>
+{% endblock %}
+

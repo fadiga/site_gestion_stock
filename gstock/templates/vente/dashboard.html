@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Resumés{% endblock %}
+{% block page-id %}Resumés{% endblock %}
+{% block content %}
+
+    <!-- end #header -->
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link1"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <!-- end #menu -->
+    <div id="content">
+        <div class="post">
+            <h1 class="title" id="alerte">Produits à signaler
+                <img id ='image' class ="{{valide}}"src="/static/css/images/wave.png" width="35"/>
+            </h1>
+            <p class="meta">Produits dont la quantite restante est &lt; 100 cartons</p>
+            <div class="entry">
+                <table  id="insured_list" class="tablesorter">
+                    <thead>
+                        <tr>
+                           <th>Magasin</th>
+                           <th>Produit</th>
+                           <th colspan=2>Restant</th>
+                           <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for al in alert%}
+                            <tr>
+                                <td>{{al.magasins.name}}</td>
+                                <td>{{al.produit.name}}</td>
+                                <td>{{al.carton_remaining}} c</td>
+                                <td>{{al.piece_remaining}} p</td>
+                                <td>{{al.date|date:"j F Y" }}</td>
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="post">
+            <h2 class="title" id="dopera">Dernières opérations</h2>
+            <p class="meta">Les 20 denieres rapports enregistre dans la base de donnée</a></p>
+            <div class="entry">
+                <table  id="insured_list" class="tablesorter">
+                    <thead>
+                        <tr>
+                            <th>Auteur</th>
+                           <th>Magasin </th>
+                           <th>Produit</th>
+                           <th>Nbre p/carton</th>
+                           <th>Nbre carton</th>
+                           <th colspan=2>Restant</th>
+                           <th>Date Heure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for op in list_op %}
+                            <tr>
+                                <td>{{op.auteur}} </td>
+                                <td>
+                                    {% ifnotequal op.type_r "e"%}
+                                        <img id ='image' class ="{{valide}}"src="/static/css/images/sortie.png" width="12"/>
+                                    {%else%}
+                                        <img id ='image' class ="{{valide}}"src="/static/css/images/entre.png" width="12"/>
+                                    {% endifnotequal %}
+                                    {{op.magasins.name}}
+                                </td>
+                                <td>{{op.produit.name}} </td> <td>{{op.produit.qtte}} p </td><td>{{op.nbr_carton}} c</td><td>{{op.carton_remaining}} c</td> <td>{{op.piece_remaining}} p </td><td> le {{op.date|date:"r"}}</td>
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- end #content -->
+    <div class="post-nav" id="sidebar">
+        <ul>
+            <li>
+                <h2>Aller à</h2>
+                <a href="#alerte">Produits à signaler »</a><br>
+                <a href="#dopera">Dernières opérations »</a>
+            </li>
+        </ul>
+    </div>
+    <!-- end #sidebar -->
+    <div style="clear: both;">&nbsp;</div>
+{% endblock %}

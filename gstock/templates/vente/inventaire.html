@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Inventaire{% endblock %}
+{% block page-id %}Inventaire{% endblock %}
+{% block content %}
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <!-- end #menu -->
+    <div id="content">
+        <div class="post">
+            <h1 class="title">Liste des Produits </h1>
+            <div class="entry">
+                <div id = "form">
+                    <form action="" method="post">{% csrf_token %}
+                        <table  id="insured_list" class="tablesorter">
+                            <thead>
+                                <tr>
+                                    <th> Magasin</th><th>Produit</th><th colspan=2>Restant</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for rap in l%}
+                                    <tr>
+                                        <td>{{rap.mag}}</td>
+                                        <td>{{rap.prod}}</td>
+                                        <td>{{rap.carton_r}} carton</td>
+                                        <td>{{rap.piece_r}} piece</td>
+                                    </tr>
+                                {%endfor%}
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                {% if l %}
+                <a href="{% url export_excel %}" title=" Export les données" style="margin-left: 70em">
+                    <img id ='image' src="/static/css/images/xls.png" width="25"/>
+                </a>
+                {% endif%}
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">&nbsp;</div>
+    </div>
+{% endblock %}

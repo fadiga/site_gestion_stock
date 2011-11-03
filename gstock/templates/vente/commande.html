@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Resumés{% endblock %}
+{% block page-id %}Resumés{% endblock %}
+{% block content %}
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <!-- end #menu -->
+    <div id="content">
+        <div class="post">
+            <h1 class="title">Liste des Produits </h1>
+            <div class="entry">
+                <div id = "form">
+
+                    <form action="" method="post">{% csrf_token %}
+                        <b> NUMERO  DE  COMMENDE  DKM… </b><input type="text" name="num_com" size="10">
+                        <table  id="insured_list" class="tablesorter">
+                            <thead>
+                                <tr>
+                                    <th> Produit</th><th>Choix</th><th> Quantite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for com in propos_command%}
+                                    <tr>
+                                        <td>{{com.name}} {{com.qtte}} p/carton</td>
+                                        <td><input type="checkbox"name="{{com.name}}"></td>
+                                        <td><input type="text" name="{{com.name}}2" size="10"> carton(s)</td>
+                                    </tr>
+                                {%endfor%}
+                            </tbody>
+                            <tfoot id="tfoot">
+                                <tr>
+                                    <td></td><td></td><td><img src="/static/css/images/xls.png"width="25"><input class= "button" type="submit" value="Export"/></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">&nbsp;</div>
+    </div>
+{% endblock %}

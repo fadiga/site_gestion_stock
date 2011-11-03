@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Add-magasin{% endblock %}
+{% block page-id %}Add-magasin{% endblock %}
+{% block content %}
+
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link1"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div class="post">
+        <h1 class="title">Fromulaire de Saisie des Magasins</h1>
+        <p class="meta"></p>
+        <div id = "form">
+            <form action="" method="post">{% csrf_token %}
+                <table>
+                    <tr>
+                        <td>{{form.name.label}}</td>
+                        <td title= "Saisie le nom du magasin">{{form.name.errors}}{{form.name}}</td>
+                        <td>{{form.adresse.label}}</td>
+                        <td title= "Saisie l'adresse du magasin">{{form.adresse}}</td>
+                        <td><input class="buttons" type="submit" value="ok"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="post">
+    <h1 class="title">Les Magasins</h1>
+    <p class="meta"></p>
+    <div class="entry">
+        <table  id="insured_list" class="tablesorter">
+            <thead>
+                <tr>
+                   <th>Nom du Magasin </th>
+                   <th> Adresse du Magasin</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ach in magasin %}
+                    <tr>
+                        <td>{{ach.name}}</td>
+                        <td>{{ach.adresse}}</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+    <div class="post-nav" id="sidebar">
+        <ul>
+            <li>
+                <h2>Aller à</h2>
+                <a href="#form">Formulaire»</a><br>
+                <a href="#insured_list">Rapports »</a>
+            </li>
+        </ul>
+    </div>
+    <!-- end #sidebar -->
+    <div style="clear: both;">&nbsp;</div>
+    </div>
+    </div>
+{% endblock %}

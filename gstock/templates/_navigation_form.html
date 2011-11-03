@@ -1,0 +1,7 @@
+<form id='navi'method="post" action="{{ navigation_formaction_url }}" >{% csrf_token %}
+    {%for field in navigation_form %}
+    {{field.label}}<br>
+    {{field}}
+    {%endfor%}
+    <input class= "button" type="submit" value="ok"/>
+</form>

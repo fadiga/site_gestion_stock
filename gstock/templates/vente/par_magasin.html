@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}All-rapport{% endblock %}
+{% block page-id %}All-rapport{% endblock %}
+{% block content %}
+
+    <!-- end #header -->
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <!-- end #menu -->
+    <div id="content">
+        <div class="post">
+            <caption>
+                <span id="duration-pagination">{% include "_duration_pagination.html" %}</span>
+                {% include "_time_pagination.html" %}
+            </caption>
+            <h1 class="title">Stocks du produit: <a>{{produit.name}}</a></h1>
+            <div class="entry">
+                <table  id="insured_list" class="tablesorter">
+                    <thead>
+                        <tr>
+                           <th> Magasin </th>
+                           <th> Nbre carton </th>
+                           <th> Nbre piece </th>
+                           <th colspan=2> Restant </th>
+                           <th> Date </th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for report in rapports %}
+                        <tr>
+                            <td>
+                                {% ifnotequal report.type_r "e"%}
+                                <img id ='image' class ="{{valide}}"src="/static/css/images/sortie.png" width="12"/>
+                                {%else%}<img id ='image' class ="{{valide}}"src="/static/css/images/entre.png" width="12"/>
+                                {% endifnotequal %}
+                                {% if duration %}
+                                <a href="{% url par-produits report.magasins.id,report.magasins.name|slugify, year, duration, duration_number %}">
+                                {{report.magasins.name}}
+                                </a>
+                            {% else %}
+                                <a href="{% url par-produits report.magasins.id,report.magasins.name|slugify, year %}">
+                                {{report.magasins.name }}
+                            {% endif %}
+                            </td>
+                            <td>{{report.nbr_carton}} c</td>
+                            <td>{{report.produit.qtte}} p</td>
+                            <td>{{report.carton_remaining}} c</td>
+                            <td>{{report.piece_remaining}} p</td>
+                            <td>{{report.date|date:"d b Y"}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot id="tfoot">
+                        <tr>
+                           <th> Magasin </th>
+                           <th> Nbre carton </th>
+                           <th> Nbre piece </th>
+                           <th colspan=2> Restant </th>
+                           <th> Date </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- end #content -->
+    <div class="post-nav" id="sidebar">
+        <ul>
+            <li>
+                <h2>Allez à</h2>
+                <li>{% include "_navigation_form.html" %}</li><br>
+                <a href="#menu"> Menu »</a><br>
+                <a href="#insured_list"> Debut rapports »</a><br>
+                <a href="#tfoot"> Fin rapports »</a>
+            </li>
+        </ul>
+    </div>
+    <!-- end #sidebar -->
+    <div style="clear: both;">&nbsp;</div>
+</div>
+{% endblock %}

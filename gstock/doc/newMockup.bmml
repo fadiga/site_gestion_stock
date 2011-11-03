@@ -1,0 +1,51 @@
+<mockup version="1.0" skin="sketch" measuredW="1243" measuredH="593" mockupW="849" mockupH="589">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="394" y="4" w="849" h="589" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::ButtonBar" x="524" y="93" w="539" h="31" measuredW="322" measuredH="31" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Acceuil%2C%20Magasins%2C%20Produits%2CRapports</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::TextArea" x="464" y="217" w="462" h="163" measuredW="200" measuredH="140" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Some%20text%0AA%20second%20line%20of%20text</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="463" y="196" w="-1" h="-1" measuredW="51" measuredH="25" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Alertes</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Canvas" x="462" y="410" w="465" h="124" measuredW="100" measuredH="70" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TextArea" x="966" y="217" w="200" h="316" measuredW="200" measuredH="140" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Some%20text%0AA%20second%20line%20of%20text</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="966" y="195" w="157" h="30" measuredW="157" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Les%20dermiere%20Op%E9rations</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="1135" y="76" w="-1" h="-1" measuredW="82" measuredH="25" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>bonjour%20fad%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Link" x="1138" y="95" w="-1" h="-1" measuredW="76" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>deconnect%E9</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="459" y="388" w="-1" h="-1" measuredW="291" measuredH="25" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Statistiques%20de%20l%27etat%20des%20magasins%20graphique</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::ColumnChart" x="481" y="416" w="386" h="116" measuredW="187" measuredH="175" zOrder="10" locked="false" isInGroup="-1"/>
+  </controls>
+</mockup>

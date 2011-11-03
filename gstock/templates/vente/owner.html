@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Administration du site{% endblock %}
+{% block page-id %}Utilisateur{% endblock %}
+{% block content %}
+
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+             <li class="top"><a href="{% url owner%}" class="top_link1"><span>les utilisateurs</span></a></li>
+             <li class="top"><a href="{% url add_owner%}" class="top_link"><span>Ajouter d'utilisateur</span></a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div class="post">
+            <h1 class="title">Liste des Utilisateurs</h1>
+            <p class="meta"></p>
+            <div class="entry">
+                <table id="insured_list" class="tablesorter">
+                    <tr>
+                        <th>Non d"utilitsateur</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Status</th>
+                        <th>Modifier</th>
+                    </tr>
+                    {% for owner in owners %}
+                        <tr>
+                            <td><img src="/static/css/images/user.png" width="15"> {{owner.username}}</a></td>
+                            <td>{{owner.first_name}}</a></td>
+                            <td>{{owner.last_name}}</a></td>
+                            <td>{% if owner.is_active %}
+                                    <img src="/static/css/images/accept.png" width="15">
+                                {%else%}
+                                    <img src="/static/css/images/decline.png" width="15">
+                                {% endif %}
+                            </td>
+                            <td><a class='table_link' href='{{owner.url}}'><img src="/static/css/images/modif.gif "width="15"></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">&nbsp;</div>
+    </div>
+{% endblock %}

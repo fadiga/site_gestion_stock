@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}All-rapport{% endblock %}
+{% block page-id %}All-rapport{% endblock %}
+{% block content %}
+
+    <!-- end #header -->
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}" class="top_link1"><span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}" class="top_link"><span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>
+    <!-- end #menu -->
+        <div id="content">
+            <div class="post">
+            <caption>
+                <span id="duration-pagination">{% include "_duration_pagination.html" %}</span>
+                {% include "_time_pagination.html" %}
+            </caption>
+            <h1 class="title">Tous les rapports</h1>
+            <div class="entry">
+                <table  id="insured_list" class="tablesorter">
+                    <thead>
+                        <tr>
+                            <th>Auteur</th>
+                           <th> Magasin </th>
+                           <th> Produit</th>
+                           <th> Nbre carton </th>
+                           <th> Nbre piece </th>
+                           <th colspan=2> Restant </th>
+                           <th> Date </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in rapports %}
+                        <tr>
+                            <td>{{report.auteur__username}} </td>
+                            <td>
+                                {% ifnotequal report.type_r "e"%}
+                                <img id ='image' class ="{{valide}}"src="/static/css/images/sortie.png" width="12"/>
+                                {%else%}<img id ='image' class ="{{valide}}"src="/static/css/images/entre.png" width="12"/>
+                                {% endifnotequal %}
+                                {% if duration %}
+                                    <a href="{% url par-produits report.magasins__id,report.magasins__name|slugify, year, duration, duration_number %}">
+                                    {{report.magasins__name}}
+                                    </a>
+                                {% else %}
+                                    <a href="{% url par-produits report.magasins__id,report.magasins__name|slugify, year %}">
+                                    {{report.magasins__name}}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if duration %}
+                                    <a href="{% url par-magasins report.produit__id,report.produit__name|slugify, year, duration, duration_number %}">
+                                    {{report.produit__name}}
+                                    </a>
+                                {% else %}
+                                    <a href="{% url par-magasins report.produit__id,report.produit__name|slugify, year %}">
+                                        {{report.produit__name}}
+                                    </a>
+                                {% endif %}
+                            </td>
+                            <td>{{report.nbr_carton}} c</td>
+                            <td>{{report.produit__qtte}} p</td>
+                            <td>{{report.carton_remaining}} c</td>
+                            <td>{{report.piece_remaining}} p</td>
+                            <td>{{report.date|date:"d b Y"}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot id="tfoot">
+                        <tr>
+                            <th>Auteur</th>
+                            <th> Magasin </th>
+                            <th> Produit</th>
+                            <th> Nbre carton </th>
+                            <th> Nbre piece </th>
+                            <th colspan=2> Restant </th>
+                            <th> Date </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            </div>
+        </div>
+        <!-- end #content -->
+        <div class="post-nav" id="sidebar">
+            <ul>
+                <li>
+                    <h2>Aller à</h2>
+                    <a href="#insured_list"> Le dedut du Tableau »</a><br>
+                    <a href="#tfoot"> La fin du Tableau »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- end #sidebar -->
+        <div style="clear: both;">&nbsp;</div>
+    </div>
+    <!-- end #page -->
+</div>
+{% endblock %}

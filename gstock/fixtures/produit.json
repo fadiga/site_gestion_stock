@@ -1,0 +1,186 @@
+[
+    {
+        "pk": 1, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 12, 
+            "name": "CYLINDRE CG125"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 8, 
+            "name": "CYLINDRE DX100"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 10, 
+            "name": "CYLINDRE V50"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 8, 
+            "name": "CYLINDRE V80"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 12, 
+            "name": "CYLINDRE CD110"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 10, 
+            "name": "CYLINDRE CG125 P"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 30, 
+            "name": "CARBURATEUR DX100"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 30, 
+            "name": "CARBURATEUR V80"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 30, 
+            "name": "CARBURATEUR CG125"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 200, 
+            "name": "BOUGIES DX100"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 200, 
+            "name": "BOUGIES CD110"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 200, 
+            "name": "BOUGIES CG125"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 200, 
+            "name": "ROULEMENT 6304"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 200, 
+            "name": "ROULEMENT 6205"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 200, 
+            "name": "ROULEMENT 6204"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 200, 
+            "name": "ROULEMENT 6301"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 200, 
+            "name": "ROULEMENT 6202"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 100, 
+            "name": "DISQUE CG125"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 100, 
+            "name": "DISQUE DX100"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 100, 
+            "name": "DISQUE V80"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 50, 
+            "name": "ARBRE A CAME CG125"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 25, 
+            "name": "CHAINE 420 106L"
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "vente.produit", 
+        "fields": {
+            "qtte": 25, 
+            "name": "CHAINE 428 116L"
+        }
+    }
+]

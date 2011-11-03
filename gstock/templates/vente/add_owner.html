@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Administration du site{% endblock %}
+{% block page-id %}Utilisateur{% endblock %}
+{% block content %}
+
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
+             <li class="top"><a href="{% url owner%}" class="top_link"><span>les utilisateurs</span></a></li>
+             <li class="top"><a href="{% url add_owner%}" class="top_link1"><span>Ajouter d'utilisateur</span></a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div class="post">
+            <h1 class="title">Création d'un Utilisateur</h1>
+            <p class="meta"></p>
+            <div class="entry"><span id="mess"> {{error}}</span>
+                <form action="" method="post" >{% csrf_token %}
+                    <table>
+                        <tr>
+                            <td> {{form.username.label}}:</td>
+                            <td> {{form.username}} {{form.username.errors}}</td>
+                        </tr>
+                        <tr>
+                            <td> {{form.password.label}}:</td>
+                            <td> {{form.password}}{{form.password.errors}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{form.password_confirmation.label}}:</td>
+                            <td>{{form.password_confirmation}}</td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td> {{form.first_name.label}}:</td>
+                            <td>{{form.first_name}} {{form.first_name.errors}}</td>
+                        </tr>
+                        <tr>
+                            <td> {{form.last_name.label}}:</td>
+                            <td> {{form.last_name}}{{form.last_name.errors}}</td>
+                        </tr>
+                        <tr>
+                            <td> {{form.email.label}}:</td>
+                            <td> {{form.email}}{{form.email.errors}}</td>
+                        </tr>
+                        <tr>
+                            <td></td><td id = 'add_owner_validator' class= "{{save}}"><input type='submit' value =  "Ajouter"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">&nbsp;</div>
+    </div>
+{% endblock %}
