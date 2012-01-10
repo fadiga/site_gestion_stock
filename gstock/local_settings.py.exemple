@@ -6,6 +6,17 @@ import os
 settings.DEBUG = True
 settings.MEDIA_ROOT = os.path.join(settings.ROOT_DIR, "media")
 
+settings.DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'gstock.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
 settings.INSTALLED_APPS = settings.INSTALLED_APPS +\
                           ('smuggler',
                            'django_extensions',)

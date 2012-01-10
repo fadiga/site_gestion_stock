@@ -29,7 +29,7 @@ from vente.helper import produit_signaler
 @login_required
 def home(request):
     """ """
-    c = {}
+    c = {"category": "home"}
     c.update({"user": request.user})
     return render_to_response("home.html", c)
 
@@ -38,6 +38,7 @@ def home(request):
 def add_owner(request):
     """ add owner
     """
+    c = {"category": "add_owner"}
     group_users = ''
     try:
         # on recupere le groupe de l'utilisateur connecté
@@ -46,7 +47,6 @@ def add_owner(request):
         pass
     grp = group_users[0][1]
     if grp.__eq__("chef"):
-        c = {}
         c.update(csrf(request))
         form = AddOwner(request=request)
         user = request.user
@@ -101,6 +101,7 @@ def add_owner(request):
 def owner(request):
     """create an url by owner
     """
+    c = {"category": "owner"}
     group_users = ''
     try:
         # on recupere le groupe de l'utilisateur connecté
@@ -128,7 +129,7 @@ def owner(request):
 def owner_edit(request, *args, **kwargs):
     """ edit an organization
     """
-    c = {}
+    c = {"category": "owner_edit"}
     c.update(csrf(request))
     owner_id = kwargs["id"]
     selected_owner = User.objects.get(id=owner_id)
@@ -258,7 +259,7 @@ def logout(request):
 @login_required
 def dashboard(request):
     """ """
-    ctx = {}
+    ctx = {"category": "dashboard", "user": request.user}
     rapports = Rapport.objects.order_by("-date")
     if len(rapports) < 20:
         d_operation = rapports
@@ -275,7 +276,7 @@ def dashboard(request):
 @login_required
 def inventaire(request):
     """Presente tous les restants des produits """
-    ctx = {"user": request.user}
+    ctx = {"category": "inventaire", "user": request.user}
     ctx.update(csrf(request))
     liste_last_report = []
     for mag in Magasin.objects.all():
@@ -307,7 +308,7 @@ def commande(request):
     """Presente tous les produit à signaler et
 
     et donne la possibilité de selectionner des produits"""
-    ctx = {"user": request.user}
+    ctx = {"category": "commande", "user": request.user}
     ctx.update(csrf(request))
     if request.method == "POST":
         list_commande = []
@@ -366,14 +367,14 @@ def produit(request):
     """ """
     produits = Produit.objects.all().order_by("-id")
     form = ProduitForm()
-    ctx = {}
+    ctx = {"category": "produit", "user": request.user}
     ctx.update(csrf(request))
     if request.method == "POST":
         form = ProduitForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("produit"))
-    ctx.update({"produits": produits, "form": form, "user": request.user})
+    ctx.update({"produits": produits, "form": form})
     return render_to_response("vente/produit.html", ctx)
 
 
@@ -382,21 +383,21 @@ def magasin(request):
     """ """
     magasins = Magasin.objects.all().order_by("-id")
     form = MagasinForm()
-    ctx = {}
+    ctx = {"category": "magasin", "user": request.user}
     ctx.update(csrf(request))
     if request.method == "POST":
         form = MagasinForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("magasin"))
-    ctx.update({"magasin": magasins, "form": form, "user": request.user})
+    ctx.update({"magasin": magasins, "form": form})
     return render_to_response("vente/magasin.html", ctx)
 
 
 @login_required
 def gestion_rapports(request, *args, **kwargs):
     """ """
-    ctx = ({"user": request.user})
+    ctx = ({"category": "gestion_rapports", "user": request.user})
     # On recupere le numero depuis l"url si le numero
     # est none on donne 1 par  defaut
     num = kwargs["num"] or 1
@@ -491,7 +492,7 @@ def tous_rapports(request, *args, **kwargs):
         Affiche l'état général des stocks pour chaque magasin
         et chaque produit
     """
-    ctx = ({"user": request.user})
+    ctx = ({"category": "tous_rapports", "user": request.user})
     # On recupere les rapports filtres pour la date demandee
     year, duration, duration_number = extract_date_info_from_url(kwargs)
 
@@ -520,7 +521,7 @@ def tous_rapports(request, *args, **kwargs):
 def par_produits(request, *args, **kwargs):
     """
     """
-    ctx = ({"user": request.user})
+    ctx = ({"category": "par_produits", "user": request.user})
     ctx.update(csrf(request))
     id_ = int(request.POST.get("to_display", 0)) or int(kwargs["id"])
     try:
@@ -568,7 +569,7 @@ def par_produits(request, *args, **kwargs):
 def par_magasins(request, *args, **kwargs):
     """
         Affiche l'état des stocks pour chaque Magasins """
-    ctx = {"user": request.user}
+    ctx = {"category": "par_magasins", "user": request.user}
     ctx.update(csrf(request))
     id_ = int(request.POST.get("to_display", 0)) or int(kwargs["id"])
 
@@ -664,7 +665,7 @@ def deleting(request, *args, **kwargs):
 @login_required
 def rapport_periodique(request):
 
-    ctx = {"user": request.user}
+    ctx = {"category": "rapport_periodique", "user": request.user}
     ctx.update(csrf(request))
     form = rapport_periodiqueForm()
     rapportsp = ""

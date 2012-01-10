@@ -3,17 +3,8 @@
 {% block page-id %}Add-magasin{% endblock %}
 {% block content %}
 
-    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
-    <div id="menu">
-        <ul>
-            <li class="top"><a href="{% url home %}" class="top_link"> <span>Aceuil</span></a></li>
-            <li class="top"><a href="{% url v-dashboard %}" class="top_link"> <span>Resumés</span></a></li>
-            <li class="top"><a href="{% url rapport_periodique %}" class="top_link"> <span>Rapports périodiques</span></a></li>
-            <li class="top"><a href="{% url stock-all %}" class="top_link"><span>Tous les rapports</span></a></li>
-            <li class="top"><a href="{% url magasin %}" class="top_link1"><span>Magasins</span></a>
-            <li class="top"><a href="{% url produit %}" class="top_link"><span>Produits</span></a></li>
-            </li><li class="top"><a href="{% url g-rapport %}" class="top_link"><span>Gestion des rapports</span></a></li>
-        </ul>
+
+    <span id="logout">{% include "_menu.html" %}</span>
     </div>
     <div id="content">
         <div class="post">

@@ -1,0 +1,12 @@
+    <span id="logout">{% include "vente/_bienvenu_utilisateur.html" %}</span>
+    <div id="menu">
+        <ul>
+            <li class="top"><a href="{% url home %}"{% if category = 'home' %}class="top_link"{% endif %}><span>Acueil</span></a></li>
+            <li class="top"><a href="{% url v-dashboard %}"{% if category = 'dashboard' %}class="top_link"{% endif %}> | <span>Resumés</span></a></li>
+            <li class="top"><a href="{% url rapport_periodique %}"{% if category = 'rapport_periodique' %}class="top_link"{% endif %}> | <span>Rapports périodiques</span></a></li>
+            <li class="top"><a href="{% url stock-all %}"{% if category = 'tous_rapports' %}class="top_link"{% endif %}> | <span>Tous les rapports</span></a></li>
+            <li class="top"><a href="{% url magasin %}"{% if category = 'magasin' %}class="top_link"{% endif %}> | <span>Magasins</span></a>
+            <li class="top"><a href="{% url produit %}" {% if category = 'produit' %}class="top_link"{% endif %}> | <span>Produits</span></a></li>
+            </li><li class="top"><a href="{% url g-rapport %}"{% if category = 'gestion_rapports' %}class="top_link"{% endif %}|> | <span>Gestion des rapports</span></a></li>
+        </ul>
+    </div>

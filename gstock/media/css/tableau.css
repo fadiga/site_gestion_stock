@@ -10,7 +10,7 @@ tbody tr:hover  {color: black;}
 #form tbody tr:hover {color: #5956A5; border: 1px solid;}
 */
 .entry table tbody td a {text-decoration:none; padding: 0 33px 0 3px;}
-tr.even td {background: #E1DDB2;}
+tr.even td {background: WhiteSmoke;}
 tfoot th {background:#696969;color: #CECCCC}
 /* fin tables*/
 /*tablesorter*/

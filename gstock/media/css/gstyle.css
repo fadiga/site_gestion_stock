@@ -1,34 +1,75 @@
 /*css by fadiga*/
 /*logout*/
-#logout{color: Maroon;margin-left: 63em;font-family: Times New Roman;}
+#logout{
+    color: Maroon;margin-left: 63em;font-family: Times New Roman;
+    }
 /* common*/
 #navigation-form {float:left;}
-#time-pagination li, #report-management-pagination li {display: inline;margin-left: 1ex;}
-#duration-pagination li {display: inline;margin-left: 2em;}
-#mess{color:red;text-decoration: blink;}
-a{text-decoration: none;color: #4A3A3A;}
-a:focus, a:hover {color:MidnightBlue;}
-.report-management-pagination {background-color: #DDDDDD;margin-left: 717px;}
-.errorlist {color: #972A2A;font-size: 12px;}
-.choix { color: MidnightBlue;font-family: Verdana;font-size: 18px;}
-#choix {margin-top: 70px; margin-bottom: 70px;}
-form{margin-bottom: 0px;}
-input[type=text]:focus, input[type=password]:focus{border: 2px double #000A2B;}
-#sidebar input[id=id_date_debut], input[id=id_date_fin]{width: 121px;}
-input[type=text], input[type=password] {background-color: #CFCFCF;border-style: ridge;}
-li{list-style-type: none;display: inline;}
-ul,ol {text-align: center;margin: 0.1em;}
-ul#messages {background-color: #30363D; color: #F8F8F8; cursor: pointer;
-    max-width: 30em; -opacity: 0.65; padding: 1em; position: absolute; right: 2em;}
-body {margin: 0;padding: 0;background: CornflowerBlue;
+#time-pagination li, #report-management-pagination li {
+    display: inline;margin-left: 1ex;
+    }
+#duration-pagination li {
+    display: inline;margin-left: 2em;
+    }
+#mess {
+    color:red;text-decoration: blink;
+    }
+a {
+    text-decoration: none;color: #4A3A3A;
+    }
+a:focus, a:hover {
+    color:MidnightBlue;
+    }
+.report-management-pagination {
+    background-color: #DDDDDD;margin-left: 717px;
+    }
+.errorlist {
+    color: #972A2A;font-size: 12px;
+    }
+.choix {
+    color: MidnightBlue;font-family: Verdana;font-size: 18px;
+    }
+#choix {
+    margin-top: 70px; margin-bottom: 70px;
+    }
+form {
+    margin-bottom: 0px;
+    }
+input[type=text]:focus, input[type=password]:focus {
+    border: 2px double #000A2B;
+    }
+#sidebar input[id=id_date_debut], input[id=id_date_fin]{
+    width: 121px;
+    }
+input[type=text], input[type=password] {
+    background-color: #CFCFCF;border-style: ridge;
+    }
+li {
+    list-style-type: none;display: inline;
+    }
+ul,ol {
+    text-align: center;margin: 0.1em;
+    }
+ul#messages {
+    background-color: #30363D; color: #F8F8F8; cursor: pointer;
+    max-width: 30em; -opacity: 0.65; padding: 1em; position: absolute;
+    right: 2em;
+    }
+body {
+    margin: 0;padding: 0;background: #455A71;
     font-family: inherit,Helvetica,sans-serif;font-size: 12px;color: #402F2F;}
-h1, h2, h3 {margin: 0;padding: 0;color:  #4B3D3D;font-weight: normal;
+h1, h2, h3 {
+    margin: 0;padding: 0;color:  #4B3D3D;font-weight: normal;
     font-family: Georgia, "Times New Roman", Times, serif;}
-h1 {font-size: 2em;}
-h2, h3 {font-size: 1.6em;}
-p, ul, ol {margin-top: 0;line-height: 180%;}
+h1 {
+    font-size: 2em;}
+h2, h3 {
+    font-size: 1.6em;}
+p, ul, ol {
+    margin-top: 0;line-height: 180%;}
 /* Header */
-#header{color: blue;
+#header{
+    color: blue;
     float: left;
     font-family: Georgia,"Times New Roman",Times,serif;
     font-size: 64px;
@@ -40,24 +81,53 @@ p, ul, ol {margin-top: 0;line-height: 180%;}
 }
 /* Logo */
 /* Page */
-#page {-moz-border-radius: 7px 7px 7px 7px; -moz-box-shadow: 1px 1px 16px 2px;
-       background:url("images/img01.jpg") repeat scroll left top transparent; margin: 0 auto;width: 960px;}
+#page {
+    -moz-border-radius: 7px 7px 7px 7px; -moz-box-shadow: 1px 1px 16px 2px;
+       background:White;
+        margin: 0 auto;width: 960px;
+}
 /* Content */
-.title {color: #464646;font-family: Georgia,"Times New Roman",Times,serif;font-size: 28px;font-weight: normal;
-        letter-spacing: -1px;line-height: 100%; text-decoration: none; text-shadow: -1px 4px 7px;}
-#content {float: right;width: 922px;padding: 0px 20px 0px 0px;}
-.post {margin-bottom: 8px;}
-.meta {border-bottom: 1px dashed;padding-bottom: 5px;}
-.entry {padding: 1px 10px 1px 1px;text-align: justify;background:url("images/img02.jpg") repeat scroll left top transparent;}
+.title {
+    color: #464646;font-family: inherit;
+    font-size: 20px;font-weight: normal; letter-spacing: -1px;
+    line-height: 100%; text-decoration: none; text-shadow: -1px 4px 7px;
+}
+#content {
+    float: right;width: 922px;padding: 0px 20px 0px 0px;
+}
+.post {
+    margin-bottom: 8px;
+}
+.meta {
+    border-bottom: 1px dashed;padding-bottom: 5px;
+}
+.entry {
+    padding: 1px 10px 1px 1px;text-align: justify;
+    background:url("images/img02.jpg") repeat scroll left top transparent;
+}
 /* Sidebar */
-#sidebar {float: right;left: -3em;position: fixed;width: 170px;top: 205px;}
-#sidebar form { background-color: #BFC0B0;}
-#sidebar h2 {-moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; -moz-box-shadow: 1px 2px 3px #333333;
-            background-color: #777770;border: 1px solid #B7B7AE;color: #F3F3ED; height: 25px;}
-.post-nav a {-moz-border-radius: 4px 4px 4px 4px;-moz-box-shadow: 1px 2px 3px #333333; cursor: pointer;
-            background-color: #8B857B;border: 1px solid #B7B7AE; color: #F3F3ED;display: block;font-size: 11px;margin: 12px 0 -30px;}
+#sidebar {
+    float: right;left: -3em;position: fixed;width: 170px;top: 205px;
+}
+#sidebar form {
+     background-color: #BFC0B0;
+}
+#sidebar h2 {
+    -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;
+     -moz-box-shadow: 1px 2px 3px #333333; background-color: #777770;
+     border: 1px solid #B7B7AE;color: #F3F3ED; height: 25px;
+}
+.post-nav a {
+    -moz-border-radius: 4px 4px 4px 4px;-moz-box-shadow: 1px 2px 3px #333333;
+     cursor: pointer; background-color: #8B857B;border: 1px solid #B7B7AE;
+     color: #F3F3ED;display: block;font-size: 11px;margin: 12px 0 -30px;
+}
 /* Footer */
-#footer{background-color: transparent;color: #B2B2B2;font-size: 10px;
-    text-align: center;text-transform: inherit;}
-#footer a {color: #FBFBFB;}
+#footer{
+    background-color: transparent;color: #B2B2B2;font-size: 10px;
+    text-align: center;text-transform: inherit;
+}
+#footer a {
+    color: #FBFBFB;
+}
 /* fin common*/
