@@ -321,7 +321,7 @@ def commande(request):
             list_commande.append(request.POST["num_com"])
         except:
             list_commande.append(" ")
-        
+
         if "commande" in request.session:
             del request.session["commande"]
         if "rapport_periodique" in request.session:
@@ -347,7 +347,7 @@ def export_excel(request):
                                             % {'date': datetime.now()}
         rapport = request.session.get("inventaire")
         file_content = write_xls_inventaire(rapport).getvalue()
-    
+
     if "rapport_periodique" in request.session:
         file_name = "Rapport-du-%(date)s a bko.xls" \
                                             % {'date': datetime.now()}
@@ -498,8 +498,8 @@ def tous_rapports(request, *args, **kwargs):
     previous_date_url, todays_date_url, next_date_url, previous_date,\
     current_date, next_date, todays_date, todays_date_is_before,\
     todays_date_is_after = get_time_pagination(request, year,
-                                              duration, duration_number,\
-                                                            "stock-all")
+                                                duration,
+                                                duration_number, "stock-all")
 
     week_date_url, month_date_url, year_date_url = \
                     get_duration_pagination(year, duration, \

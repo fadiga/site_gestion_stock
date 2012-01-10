@@ -14,6 +14,7 @@ from django.contrib.auth import (authenticate, login as django_login,
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 
+
 class SimpleTest(TestCase):
     """
     Tests of ``blog`` application.

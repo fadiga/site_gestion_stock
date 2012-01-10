@@ -2,4 +2,4 @@
 *pyc
 *.sqlite
 *.orig
-
+local_settings.py
